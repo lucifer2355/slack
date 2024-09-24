@@ -62,7 +62,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
         <div className='flex flex-col gap-y-2.5'>
           <Button
             disabled={false}
-            onClick={() => {}}
+            onClick={() => handleProviderSignIn("google")}
             className='w-full relative'
             size='lg'
             variant='outline'

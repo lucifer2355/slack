@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { FcGoogle } from "react-icons/fc";
+import { TriangleAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,7 +14,6 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { FaGithub } from "react-icons/fa";
 import { SignInFlow } from "../types";
-import { TriangleAlert } from "lucide-react";
 
 interface SignInCardProps {
   setState: (state: SignInFlow) => void;
@@ -36,7 +36,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
       .finally(() => setPending(false));
   };
 
-  const handleProviderSignIn = (value: "google" | "github") => {
+  const onProviderSignIn = (value: "google" | "github") => {
     setPending(true);
     signIn(value).finally(() => setPending(false));
   };
@@ -81,7 +81,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
         <div className='flex flex-col gap-y-2.5'>
           <Button
             disabled={pending}
-            onClick={() => handleProviderSignIn("google")}
+            onClick={() => onProviderSignIn("google")}
             className='w-full relative'
             size='lg'
             variant='outline'
@@ -91,7 +91,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
           </Button>
           <Button
             disabled={pending}
-            onClick={() => handleProviderSignIn("github")}
+            onClick={() => onProviderSignIn("github")}
             className='w-full relative'
             size='lg'
             variant='outline'
